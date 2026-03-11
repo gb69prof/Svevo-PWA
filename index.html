@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Italo Svevo – PWA didattica</title>
+  <meta name="description" content="PWA didattica su Italo Svevo">
+  <meta name="theme-color" content="#7a5134">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Svevo">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./assets/icons/icon-180.png">
+  <link rel="icon" href="./assets/icons/icon-192.png">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <script src="./assets/js/pwa.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="./index.html" aria-label="Home Svevo PWA">
+    <img src="./assets/icons/icon-192.png" alt="Icona Svevo">
+    <span><strong>Italo Svevo</strong><span class="sub">PWA didattica installabile</span></span>
+  </a>
+  <div class="header-actions">
+    <button class="btn small" id="install-app" hidden>Installa</button>
+    <button class="icon-btn" id="open-menu" aria-label="Apri indice">☰</button>
+  </div>
+</header>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-backdrop"></div>
+  <aside class="drawer-panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
+      <h2>Indice delle lezioni</h2>
+      <button class="icon-btn" id="close-menu" aria-label="Chiudi indice">✕</button>
+    </div>
+    <div class="drawer-links">
+      <a class="drawer-link" href="./index.html"><strong>Home</strong><small>Panoramica del percorso su Svevo</small></a>
+      <a class="drawer-link" href="./romanzo.html"><strong>La vita di Zeno e la struttura del romanzo</strong><small>Cronologia reale e struttura tematica della Coscienza di Zeno</small></a><a class="drawer-link" href="./verita.html"><strong>Il concetto di verità: Manzoni e Svevo a confronto</strong><small>Dalla verità storica alla verità soggettiva</small></a><a class="drawer-link" href="./tre-giudizi.html"><strong>Tre giudizi sull’inetto</strong><small>Scienza, intellettualità e senso comune davanti a Zeno</small></a><a class="drawer-link" href="./zeno-padre.html"><strong>Zeno e il padre</strong><small>Autorità, colpa e crisi delle certezze</small></a><a class="drawer-link" href="./complessita.html"><strong>Zeno di fronte alla complessità della vita</strong><small>La coscienza che paralizza l’azione</small></a><a class="drawer-link" href="./funerale-lapsus.html"><strong>Il funerale di Guido e il lapsus</strong><small>Interpretazione psicoanalitica del mancato funerale</small></a><a class="drawer-link" href="./inetto.html"><strong>L’inetto come abbozzo dell’uomo futuro</strong><small>Malattia, coscienza ed evoluzione in Svevo</small></a><a class="drawer-link" href="./deflagrazione.html"><strong>La deflagrazione finale</strong><small>Tecnica, malattia e apocalisse nella chiusa del romanzo</small></a><a class="drawer-link" href="./poetica.html"><strong>La poetica di Svevo</strong><small>Ironia e senso di colpa nella coscienza di Zeno</small></a><a class="drawer-link" href="./svevo-pirandello.html"><strong>Pirandello e Svevo</strong><small>Due movimenti dell’ironia nella modernità</small></a>
+    </div>
+  </aside>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Manuale interattivo • installabile • offline</span>
+        <h1>Italo Svevo,<br>tra coscienza,<br>ironia e crisi moderna</h1>
+        <p>Questa PWA raccoglie un percorso completo su <em>La coscienza di Zeno</em>: lezioni sintetiche ma serie, mappe concettuali leggibili, navigazione rapida e consultazione offline della struttura essenziale del sito. Non è una vetrina ornamentale. È uno strumento didattico pensato per funzionare bene davvero su GitHub Pages, Android e iPad.</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="./romanzo.html">Inizia dal romanzo</a>
+          <a class="btn" href="#lezioni">Vai all’indice</a>
+        </div>
+        <p class="install-note"><strong>Installazione:</strong> su Android da Chrome usa “Installa app” o “Aggiungi a schermata Home”; su iPhone/iPad usa Condividi → “Aggiungi a Home”.</p>
+      </div>
+      <div class="hero-visual">
+        <img src="./assets/images/cover.webp" alt="Copertina didattica su Italo Svevo">
+        <div class="overlay">
+          <strong>Percorso incluso</strong>
+          <div class="muted">Cronologia del romanzo, verità narrativa, inetto, rapporto col padre, psicoanalisi, ironia, finale apocalittico, confronto con Pirandello.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="lezioni">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Lezioni e mappe concettuali</h2>
+          <p>Ogni pagina contiene spiegazione didattica, mappa visiva e collegamenti rapidi alle altre sezioni.</p>
+        </div>
+      </div>
+      <div class="lessons-grid">
+        <article class="card">
+      <a href="./romanzo.html">
+        <img src="./assets/images/romanzo.webp" alt="Mappa concettuale - La vita di Zeno e la struttura del romanzo" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="chip">Lezione 1</div>
+        <h3>La vita di Zeno e la struttura del romanzo</h3>
+        <p>Cronologia reale e struttura tematica della Coscienza di Zeno</p>
+        <div class="meta"><span>Testo + mappa</span><a href="./romanzo.html">Apri →</a></div>
+      </div>
+    </article><article class="card">
+      <a href="./verita.html">
+        <img src="./assets/images/verita.webp" alt="Mappa concettuale - Il concetto di verità: Manzoni e Svevo a confronto" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="chip">Lezione 2</div>
+        <h3>Il concetto di verità: Manzoni e Svevo a confronto</h3>
+        <p>Dalla verità storica alla verità soggettiva</p>
+        <div class="meta"><span>Testo + mappa</span><a href="./verita.html">Apri →</a></div>
+      </div>
+    </article><article class="card">
+      <a href="./tre-giudizi.html">
+        <img src="./assets/images/tre-giudizi.webp" alt="Mappa concettuale - Tre giudizi sull’inetto" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="chip">Lezione 3</div>
+        <h3>Tre giudizi sull’inetto</h3>
+        <p>Scienza, intellettualità e senso comune davanti a Zeno</p>
+        <div class="meta"><span>Testo + mappa</span><a href="./tre-giudizi.html">Apri →</a></div>
+      </div>
+    </article><article class="card">
+      <a href="./zeno-padre.html">
+        <img src="./assets/images/zeno-padre.webp" alt="Mappa concettuale - Zeno e il padre" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="chip">Lezione 4</div>
+        <h3>Zeno e il padre</h3>
+        <p>Autorità, colpa e crisi delle certezze</p>
+        <div class="meta"><span>Testo + mappa</span><a href="./zeno-padre.html">Apri →</a></div>
+      </div>
+    </article><article class="card">
+      <a href="./complessita.html">
+        <img src="./assets/images/complessita.webp" alt="Mappa concettuale - Zeno di fronte alla complessità della vita" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="chip">Lezione 5</div>
+        <h3>Zeno di fronte alla complessità della vita</h3>
+        <p>La coscienza che paralizza l’azione</p>
+        <div class="meta"><span>Testo + mappa</span><a href="./complessita.html">Apri →</a></div>
+      </div>
+    </article><article class="card">
+      <a href="./funerale-lapsus.html">
+        <img src="./assets/images/funerale.webp" alt="Mappa concettuale - Il funerale di Guido e il lapsus" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="chip">Lezione 6</div>
+        <h3>Il funerale di Guido e il lapsus</h3>
+        <p>Interpretazione psicoanalitica del mancato funerale</p>
+        <div class="meta"><span>Testo + mappa</span><a href="./funerale-lapsus.html">Apri →</a></div>
+      </div>
+    </article><article class="card">
+      <a href="./inetto.html">
+        <img src="./assets/images/inetto.webp" alt="Mappa concettuale - L’inetto come abbozzo dell’uomo futuro" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="chip">Lezione 7</div>
+        <h3>L’inetto come abbozzo dell’uomo futuro</h3>
+        <p>Malattia, coscienza ed evoluzione in Svevo</p>
+        <div class="meta"><span>Testo + mappa</span><a href="./inetto.html">Apri →</a></div>
+      </div>
+    </article><article class="card">
+      <a href="./deflagrazione.html">
+        <img src="./assets/images/deflagrazione.webp" alt="Mappa concettuale - La deflagrazione finale" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="chip">Lezione 8</div>
+        <h3>La deflagrazione finale</h3>
+        <p>Tecnica, malattia e apocalisse nella chiusa del romanzo</p>
+        <div class="meta"><span>Testo + mappa</span><a href="./deflagrazione.html">Apri →</a></div>
+      </div>
+    </article><article class="card">
+      <a href="./poetica.html">
+        <img src="./assets/images/poetica.webp" alt="Mappa concettuale - La poetica di Svevo" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="chip">Lezione 9</div>
+        <h3>La poetica di Svevo</h3>
+        <p>Ironia e senso di colpa nella coscienza di Zeno</p>
+        <div class="meta"><span>Testo + mappa</span><a href="./poetica.html">Apri →</a></div>
+      </div>
+    </article><article class="card">
+      <a href="./svevo-pirandello.html">
+        <img src="./assets/images/svevo-pirandello.webp" alt="Mappa concettuale - Pirandello e Svevo" loading="lazy">
+      </a>
+      <div class="card-body">
+        <div class="chip">Lezione 10</div>
+        <h3>Pirandello e Svevo</h3>
+        <p>Due movimenti dell’ironia nella modernità</p>
+        <div class="meta"><span>Testo + mappa</span><a href="./svevo-pirandello.html">Apri →</a></div>
+      </div>
+    </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container lessons-grid">
+      <div class="sidebar-card">
+        <h3>Come usare questa PWA in classe</h3>
+        <ul>
+          <li>Apri le pagine come manuale lineare oppure salta direttamente alle mappe.</li>
+          <li>Usala su LIM, notebook, tablet e smartphone senza cambiare struttura.</li>
+          <li>Dopo il primo caricamento le pagine principali restano disponibili anche offline.</li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <h3>Architettura inclusa</h3>
+        <ul>
+          <li>Manifest completo con icone 180, 192 e 512.</li>
+          <li>Service worker con precache, runtime caching e fallback offline.</li>
+          <li>Banner aggiornamento, layout responsive e percorsi compatibili con GitHub Pages.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-box">PWA didattica su Italo Svevo • pronta per GitHub Pages • realizzata per gbprof con struttura multipagina, installazione standalone e supporto offline della shell UI.</div>
+  </div>
+</footer>
+
+<div id="update-banner" role="status" aria-live="polite">
+  <div><strong>Aggiornamento disponibile.</strong><br><span class="muted">Ricarica la PWA per usare la versione più recente.</span></div>
+  <button class="btn primary small" id="reload-app">Ricarica</button>
+</div>
+</body>
+</html>

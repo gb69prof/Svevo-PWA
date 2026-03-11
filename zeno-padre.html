@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Zeno e il padre – Svevo PWA</title>
+  <meta name="description" content="PWA didattica su Italo Svevo">
+  <meta name="theme-color" content="#7a5134">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Svevo">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./assets/icons/icon-180.png">
+  <link rel="icon" href="./assets/icons/icon-192.png">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <script src="./assets/js/pwa.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="./index.html" aria-label="Home Svevo PWA">
+    <img src="./assets/icons/icon-192.png" alt="Icona Svevo">
+    <span><strong>Italo Svevo</strong><span class="sub">PWA didattica installabile</span></span>
+  </a>
+  <div class="header-actions">
+    <button class="btn small" id="install-app" hidden>Installa</button>
+    <button class="icon-btn" id="open-menu" aria-label="Apri indice">☰</button>
+  </div>
+</header>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-backdrop"></div>
+  <aside class="drawer-panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
+      <h2>Indice delle lezioni</h2>
+      <button class="icon-btn" id="close-menu" aria-label="Chiudi indice">✕</button>
+    </div>
+    <div class="drawer-links">
+      <a class="drawer-link" href="./index.html"><strong>Home</strong><small>Panoramica del percorso su Svevo</small></a>
+      <a class="drawer-link" href="./romanzo.html"><strong>La vita di Zeno e la struttura del romanzo</strong><small>Cronologia reale e struttura tematica della Coscienza di Zeno</small></a><a class="drawer-link" href="./verita.html"><strong>Il concetto di verità: Manzoni e Svevo a confronto</strong><small>Dalla verità storica alla verità soggettiva</small></a><a class="drawer-link" href="./tre-giudizi.html"><strong>Tre giudizi sull’inetto</strong><small>Scienza, intellettualità e senso comune davanti a Zeno</small></a><a class="drawer-link" href="./zeno-padre.html"><strong>Zeno e il padre</strong><small>Autorità, colpa e crisi delle certezze</small></a><a class="drawer-link" href="./complessita.html"><strong>Zeno di fronte alla complessità della vita</strong><small>La coscienza che paralizza l’azione</small></a><a class="drawer-link" href="./funerale-lapsus.html"><strong>Il funerale di Guido e il lapsus</strong><small>Interpretazione psicoanalitica del mancato funerale</small></a><a class="drawer-link" href="./inetto.html"><strong>L’inetto come abbozzo dell’uomo futuro</strong><small>Malattia, coscienza ed evoluzione in Svevo</small></a><a class="drawer-link" href="./deflagrazione.html"><strong>La deflagrazione finale</strong><small>Tecnica, malattia e apocalisse nella chiusa del romanzo</small></a><a class="drawer-link" href="./poetica.html"><strong>La poetica di Svevo</strong><small>Ironia e senso di colpa nella coscienza di Zeno</small></a><a class="drawer-link" href="./svevo-pirandello.html"><strong>Pirandello e Svevo</strong><small>Due movimenti dell’ironia nella modernità</small></a>
+    </div>
+  </aside>
+</div>
+
+<main class="container lesson-layout">
+  <article>
+    <div class="lesson-panel heroish">
+      <div class="lesson-header-copy">
+        <div class="breadcrumbs"><a href="./index.html">Home</a><span>•</span><span>Lezione 4</span></div>
+        <h1>Zeno e il padre</h1>
+        <p class="lead">Il rapporto tra Zeno e il padre è uno dei nodi più dolorosi del romanzo. Non è soltanto uno scontro tra due caratteri: è il confronto tra due modi opposti di stare nel mondo.</p>
+        <div class="top-actions">
+          <a class="btn primary small" href="#mappa">Vai alla mappa</a>
+          <a class="btn small" href="#spiegazione">Vai alla spiegazione</a>
+        </div>
+      </div>
+      <div class="lesson-map" id="mappa">
+        <img src="./assets/images/zeno-padre.webp" alt="Mappa concettuale di Zeno e il padre" loading="eager">
+      </div>
+    </div>
+
+    <div class="lesson-panel" id="spiegazione" style="margin-top:1rem">
+      <div class="chip">Lezione 4</div>
+      <section class="section-block"><h2>Il giudizio del padre su Zeno</h2><ul><li>Per il padre, Zeno è inconcludente: cambia studi, rimanda le scelte, non dà garanzie di solidità.</li><li>La famosa sentenza “tu sei un pazzo” non è una battuta: è un giudizio sociale e morale.</li></ul></section><section class="section-block"><h2>Il giudizio di Zeno sul padre</h2><ul><li>Zeno capovolge il quadro: il padre gli appare forte solo in superficie.</li><li>È un uomo che vive dentro un sistema di certezze tranquille e non sopporta ciò che le incrina.</li><li>La sua presunta salute coincide con l’incapacità di accettare la complessità del mondo.</li></ul></section><section class="section-block"><h2>La falsa sicurezza del padre</h2><ul><li>Il padre sembra un commerciante abile e saldo, ma Zeno svela che i suoi affari sono guidati da Olivi.</li><li>Questa rivelazione riduce la sua immagine di uomo totalmente padrone della realtà.</li></ul></section><section class="section-block"><h2>L’agonia e lo schiaffo</h2><ul><li>Durante la malattia del padre, Zeno vive il conflitto tra pietà, giudizio morale e senso di colpa.</li><li>Lo schiaffo finale resta ambiguo: gesto involontario o condanna estrema? Per Zeno diventa trauma definitivo.</li></ul></section><section class="section-block"><h2>Il significato profondo</h2><ul><li>Il padre incarna un mondo stabile e ottocentesco.</li><li>Zeno, con il suo dubbio e la sua instabilità, anticipa invece l’uomo moderno: inquieto, incompleto, adattabile.</li></ul></section>
+      <div class="pullquote">Idea guida: Svevo non costruisce eroi compatti. Costruisce una coscienza che si osserva, si incrina, si difende e proprio per questo diventa modernissima.</div>
+    </div>
+  </article>
+
+  <aside class="sidebar-stack">
+    <div class="sidebar-card">
+      <h3>Percorso completo</h3>
+      <div class="timeline"><a class="" href="./romanzo.html">La vita di Zeno e la struttura del romanzo</a><a class="" href="./verita.html">Il concetto di verità: Manzoni e Svevo a confronto</a><a class="" href="./tre-giudizi.html">Tre giudizi sull’inetto</a><a class="active" href="./zeno-padre.html">Zeno e il padre</a><a class="" href="./complessita.html">Zeno di fronte alla complessità della vita</a><a class="" href="./funerale-lapsus.html">Il funerale di Guido e il lapsus</a><a class="" href="./inetto.html">L’inetto come abbozzo dell’uomo futuro</a><a class="" href="./deflagrazione.html">La deflagrazione finale</a><a class="" href="./poetica.html">La poetica di Svevo</a><a class="" href="./svevo-pirandello.html">Pirandello e Svevo</a></div>
+    </div>
+    <div class="sidebar-card">
+      <h3>Focus rapido</h3>
+      <ul>
+        <li>Autorità, colpa e crisi delle certezze</li>
+        <li>Pagina ottimizzata per studio, ripasso e proiezione in classe.</li>
+        <li>Disponibile offline dopo il primo accesso.</li>
+      </ul>
+    </div>
+  </aside>
+</main>
+<footer class="footer">
+  <div class="container"><div class="footer-box"><a href="./index.html">← Torna alla home</a></div></div>
+</footer>
+
+<div id="update-banner" role="status" aria-live="polite">
+  <div><strong>Aggiornamento disponibile.</strong><br><span class="muted">Ricarica la PWA per usare la versione più recente.</span></div>
+  <button class="btn primary small" id="reload-app">Ricarica</button>
+</div>
+</body>
+</html>
