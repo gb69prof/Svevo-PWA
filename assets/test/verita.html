@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test – Il concetto di verità nelle prefazioni di Manzoni e Svevo</title>
+  <style>
+    :root{
+      --bg:#f4efe7;
+      --card:#fffaf4;
+      --ink:#2d241d;
+      --muted:#6b5b4c;
+      --accent:#7a5134;
+      --ok:#2e7d32;
+      --bad:#b3261e;
+      --line:#dccbb8;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      background:linear-gradient(180deg,#f4efe7 0%,#efe5d6 100%);
+      color:var(--ink);
+    }
+    .wrap{width:min(980px,calc(100% - 28px));margin:28px auto 40px}
+    .hero,.card,.question,.report,.recovery{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:0 10px 28px rgba(45,36,29,.08)}
+    .hero{padding:28px}
+    h1{margin:0 0 10px;font-size:2rem;color:var(--accent)}
+    .subtitle{margin:0;color:var(--muted);line-height:1.7}
+    .card{padding:20px;margin-top:18px}
+    .question{padding:20px;margin-top:18px}
+    .question h2{margin:0 0 12px;font-size:1.2rem;color:var(--accent)}
+    .answers{display:grid;gap:10px}
+    .answer{
+      display:block;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+    .answer:hover{transform:translateY(-1px);border-color:#c8aa8d}
+    .answer input{margin-right:10px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    button{
+      border:none;
+      background:var(--accent);
+      color:#fff;
+      padding:12px 18px;
+      border-radius:999px;
+      font:inherit;
+      cursor:pointer;
+    }
+    button.secondary{background:#ede1d2;color:var(--accent)}
+    .hidden{display:none}
+    .score{font-size:1.5rem;color:var(--accent);margin:0 0 8px}
+    .result-item{padding:14px 0;border-top:1px solid var(--line)}
+    .result-item:first-child{border-top:none}
+    .ok{color:var(--ok);font-weight:700}
+    .bad{color:var(--bad);font-weight:700}
+    .mini-box{margin-top:14px;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid var(--line)}
+    .legend{color:var(--muted);font-size:.98rem;line-height:1.7}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Test – Il concetto di verità nelle prefazioni di Manzoni e Svevo</h1>
+      <p class="subtitle">10 domande a risposta multipla. Le domande e le risposte vengono rimescolate ogni volta che si ricarica la pagina. Alla fine trovi il report con voto, risposte corrette ed errate, e una mini-lezione di recupero costruita solo sui punti sbagliati.</p>
+    </section>
+
+    <section class="card" id="test-container"></section>
+
+    <section class="report card hidden" id="report">
+      <h2>Report finale</h2>
+      <p class="score" id="final-score"></p>
+      <div id="results-list"></div>
+      <div class="actions">
+        <button id="show-recovery">Mini-lezione di recupero</button>
+        <button class="secondary" id="retry-test">Rifai il test</button>
+      </div>
+    </section>
+
+    <section class="recovery card hidden" id="recovery">
+      <h2>Mini-lezione di recupero</h2>
+      <p class="legend">Qui compaiono solo i concetti legati alle risposte sbagliate. Se il test è andato tutto bene, questa sezione te lo dirà chiaramente.</p>
+      <div id="recovery-list"></div>
+    </section>
+  </div>
+
+  <script>
+    const rawQuestions = [
+      {
+        question: "Che cosa cambia profondamente tra il romanzo ottocentesco e quello novecentesco secondo la lezione?",
+        answers: [
+          "Il numero dei personaggi principali",
+          "Il modo di intendere la verità",
+          "L'uso esclusivo del narratore esterno",
+          "La presenza di lettere e documenti"
+        ],
+        correct: 1,
+        explanation: "Il punto centrale della lezione è proprio questo: cambia il concetto di verità, non un semplice dettaglio tecnico.",
+        recovery: "Ricorda il cuore del confronto: tra Ottocento e Novecento non cambia solo lo stile del romanzo, ma il modo stesso di concepire la verità." 
+      },
+      {
+        question: "Quale opere vengono messe a confronto nella lezione?",
+        answers: [
+          "I promessi sposi e La coscienza di Zeno",
+          "I Malavoglia e Uno, nessuno e centomila",
+          "Il fu Mattia Pascal e Senilità",
+          "Le confessioni di un italiano e Mastro-don Gesualdo"
+        ],
+        correct: 0,
+        explanation: "Il confronto riguarda le prefazioni dei Promessi sposi di Manzoni e della Coscienza di Zeno di Svevo.",
+        recovery: "Fissa il campo preciso della lezione: non un confronto generale tra autori, ma tra due prefazioni molto significative." 
+      },
+      {
+        question: "Quale espediente usa Manzoni nella prefazione dei Promessi sposi?",
+        answers: [
+          "Finge di raccontare una storia ricevuta da Renzo in persona",
+          "Afferma di aver trovato un antico manoscritto secentesco",
+          "Dichiara apertamente di inventare tutta la vicenda",
+          "Introduce il romanzo con un dialogo filosofico"
+        ],
+        correct: 1,
+        explanation: "Manzoni dice di aver trovato un manoscritto antico: è una finzione narrativa che serve a dare credibilità storica alla vicenda.",
+        recovery: "Manzoni usa il manoscritto ritrovato per far apparire la storia come fondata su documenti e fatti reali." 
+      },
+      {
+        question: "Secondo la finzione narrativa manzoniana, chi sarebbe Manzoni?",
+        answers: [
+          "Il protagonista nascosto della storia",
+          "Il semplice trascrittore e mediatore del manoscritto",
+          "Un testimone oculare della peste",
+          "Un personaggio secondario del Seicento"
+        ],
+        correct: 1,
+        explanation: "Manzoni si presenta come colui che trascrive e rende leggibile un testo precedente.",
+        recovery: "Non dimenticare: nella finzione della prefazione, Manzoni non si presenta come creatore assoluto, ma come trascrittore di un testo antico." 
+      },
+      {
+        question: "Qual è lo scopo dell'artificio usato da Manzoni?",
+        answers: [
+          "Rendere la storia credibile e fondata su fatti documentabili",
+          "Nascondere la propria identità politica",
+          "Trasformare il romanzo in una favola morale",
+          "Dimostrare che la storia è sempre falsa"
+        ],
+        correct: 0,
+        explanation: "L'artificio serve a dare alla vicenda il valore di una storia vera, quasi di una testimonianza storica.",
+        recovery: "Per Manzoni il romanzo deve avvicinarsi alla realtà storica: per questo costruisce una cornice che rafforza la credibilità dei fatti." 
+      },
+      {
+        question: "Chi presenta il romanzo nella prefazione della Coscienza di Zeno?",
+        answers: [
+          "Italo Svevo in prima persona",
+          "Zeno Cosini da anziano",
+          "Il dottor S., psicoanalista di Zeno",
+          "Ada, come testimone esterna"
+        ],
+        correct: 2,
+        explanation: "A introdurre il romanzo non è l'autore, ma il dottor S., scelta decisiva per il senso del testo.",
+        recovery: "In Svevo è fondamentale la mediazione del dottor S.: già da lì il lettore capisce che la verità sarà problematica." 
+      },
+      {
+        question: "Perché il racconto di Zeno non è pienamente affidabile?",
+        answers: [
+          "Perché Zeno ha perso parte della memoria a causa di una malattia fisica",
+          "Perché è scritto in forma poetica e simbolica",
+          "Perché i suoi ricordi sono mescolati a menzogne, autoinganni e deformazioni della memoria",
+          "Perché il romanzo è incompleto"
+        ],
+        correct: 2,
+        explanation: "Il dottor S. avverte che Zeno mescola verità e menzogne: la memoria è già interpretazione e deformazione.",
+        recovery: "Nel Novecento la memoria non è più vista come uno specchio fedele: in Zeno è attraversata da autoinganni e contraddizioni." 
+      },
+      {
+        question: "Quale nuova concezione della mente umana spiega l'ambiguità del racconto di Zeno?",
+        answers: [
+          "La psicologia comportamentista",
+          "La filosofia positivista",
+          "La psicoanalisi di Freud",
+          "La retorica classica"
+        ],
+        correct: 2,
+        explanation: "La lezione richiama esplicitamente Freud: inconscio, desideri repressi e traumi influenzano il racconto di sé.",
+        recovery: "Per capire Svevo bisogna ricordare il peso della psicoanalisi: l'uomo non controlla del tutto i propri pensieri né i propri ricordi." 
+      },
+      {
+        question: "Come appare la verità in Svevo secondo la lezione?",
+        answers: [
+          "Storica, oggettiva e documentabile",
+          "Soggettiva, incerta e ambigua",
+          "Puramente religiosa e morale",
+          "Fissa e valida per tutti nello stesso modo"
+        ],
+        correct: 1,
+        explanation: "Svevo mette in crisi l'idea di una verità oggettiva: la realtà è filtrata dalla mente individuale.",
+        recovery: "Se Manzoni tende verso l'oggettività storica, Svevo mostra una verità instabile, soggettiva e segnata dall'inconscio." 
+      },
+      {
+        question: "Che cosa rivela il confronto tra Manzoni e Svevo?",
+        answers: [
+          "Il passaggio dall'idea ottocentesca di realtà oggettiva alla crisi novecentesca della certezza",
+          "La superiorità assoluta del romanzo storico su quello psicologico",
+          "L'inutilità delle prefazioni nei romanzi moderni",
+          "La continuità perfetta tra Ottocento e Novecento"
+        ],
+        correct: 0,
+        explanation: "Il confronto rende visibile un mutamento culturale profondo tra i due secoli.",
+        recovery: "Il senso ultimo della lezione è storico-culturale: Manzoni rappresenta la fiducia nell'oggettività; Svevo, invece, la crisi di quella fiducia." 
+      }
+    ];
+
+    function shuffle(array) {
+      const copy = [...array];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function buildQuestions() {
+      return shuffle(rawQuestions).map((q, index) => {
+        const answers = q.answers.map((text, i) => ({ text, isCorrect: i === q.correct }));
+        const shuffledAnswers = shuffle(answers);
+        return {
+          id: index + 1,
+          question: q.question,
+          answers: shuffledAnswers,
+          explanation: q.explanation,
+          recovery: q.recovery
+        };
+      });
+    }
+
+    let questions = buildQuestions();
+
+    function renderTest() {
+      const container = document.getElementById('test-container');
+      const html = questions.map((q, qi) => `
+        <article class="question">
+          <h2>Domanda ${qi + 1}</h2>
+          <p>${q.question}</p>
+          <div class="answers">
+            ${q.answers.map((a, ai) => `
+              <label class="answer">
+                <input type="radio" name="q-${qi}" value="${ai}">
+                ${a.text}
+              </label>
+            `).join('')}
+          </div>
+        </article>
+      `).join('');
+
+      container.innerHTML = html + `
+        <div class="actions">
+          <button id="submit-test">Consegna test</button>
+        </div>
+      `;
+
+      document.getElementById('submit-test').addEventListener('click', submitTest);
+    }
+
+    function submitTest() {
+      const report = document.getElementById('report');
+      const recovery = document.getElementById('recovery');
+      const finalScore = document.getElementById('final-score');
+      const resultsList = document.getElementById('results-list');
+      const recoveryList = document.getElementById('recovery-list');
+
+      let correctCount = 0;
+      const wrongRecoveries = [];
+
+      const resultsHtml = questions.map((q, qi) => {
+        const chosen = document.querySelector(`input[name="q-${qi}"]:checked`);
+        const chosenIndex = chosen ? Number(chosen.value) : -1;
+        const chosenAnswer = chosenIndex >= 0 ? q.answers[chosenIndex] : null;
+        const correctAnswer = q.answers.find(a => a.isCorrect);
+        const isCorrect = !!chosenAnswer && chosenAnswer.isCorrect;
+
+        if (isCorrect) {
+          correctCount++;
+        } else {
+          wrongRecoveries.push({
+            question: q.question,
+            recovery: q.recovery,
+            correct: correctAnswer.text
+          });
+        }
+
+        return `
+          <div class="result-item">
+            <p><strong>Domanda ${qi + 1}:</strong> ${q.question}</p>
+            <p>${isCorrect ? '<span class="ok">✔ Corretta</span>' : '<span class="bad">✘ Errata</span>'}</p>
+            <p><strong>Tua risposta:</strong> ${chosenAnswer ? chosenAnswer.text : 'Nessuna risposta'}</p>
+            <p><strong>Risposta giusta:</strong> ${correctAnswer.text}</p>
+            <p class="legend">${q.explanation}</p>
+          </div>
+        `;
+      }).join('');
+
+      const voto = (correctCount / questions.length) * 10;
+      finalScore.textContent = `Punteggio: ${correctCount}/10 — Voto: ${voto.toFixed(1)}`;
+      resultsList.innerHTML = resultsHtml;
+      report.classList.remove('hidden');
+      recovery.classList.add('hidden');
+
+      document.getElementById('show-recovery').onclick = () => {
+        if (wrongRecoveries.length === 0) {
+          recoveryList.innerHTML = `<div class="mini-box"><strong>Nessun recupero necessario.</strong><br>Hai risposto correttamente a tutte le domande.</div>`;
+        } else {
+          recoveryList.innerHTML = wrongRecoveries.map((item, i) => `
+            <div class="mini-box">
+              <p><strong>Punto da recuperare ${i + 1}</strong></p>
+              <p><strong>Domanda:</strong> ${item.question}</p>
+              <p><strong>Risposta corretta:</strong> ${item.correct}</p>
+              <p>${item.recovery}</p>
+            </div>
+          `).join('');
+        }
+        recovery.classList.remove('hidden');
+        recovery.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+    }
+
+    document.getElementById('retry-test').addEventListener('click', () => {
+      questions = buildQuestions();
+      document.getElementById('report').classList.add('hidden');
+      document.getElementById('recovery').classList.add('hidden');
+      renderTest();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    renderTest();
+  </script>
+</body>
+</html>
