@@ -143,6 +143,37 @@ img{max-width:100%;display:block}
 .full-lesson p,.full-lesson li{font-size:1.05rem; line-height:1.8}
 .full-lesson ul,.full-lesson ol{padding-left:22px}
 .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin:18px 0 8px}
+
+.lesson-action-bar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+.lesson-action-bar .pill-btn,
+.lesson-action-bar .ghost-btn{
+  flex:1 1 150px;
+  justify-content:center;
+}
+.lesson-highlight{
+  background:#ffef94;
+  color:inherit;
+  padding:0 .08em;
+  border-radius:4px;
+}
+.selection-highlight-btn{
+  position:absolute;
+  z-index:130;
+  border:none;
+  border-radius:999px;
+  background:var(--accent);
+  color:#fff;
+  font:inherit;
+  padding:8px 14px;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+}
+.selection-highlight-btn[hidden]{display:none}
 .side-box{padding:18px}
 .side-box h3{margin:0 0 10px}
 .side-box p{margin:0; color:var(--muted); line-height:1.65}
