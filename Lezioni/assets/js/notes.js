@@ -49,7 +49,9 @@
     }
 
     videoFrame.hidden = !showVideo;
+    videoFrame.style.display = showVideo ? 'block' : 'none';
     mapImage.hidden = showVideo;
+    mapImage.style.display = showVideo ? 'none' : 'block';
     videoToggleButton.textContent = showVideo ? 'Mostra immagine' : 'Video-lezione';
   }
 
