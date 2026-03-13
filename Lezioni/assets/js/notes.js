@@ -39,6 +39,32 @@
   openNotesButton.type = 'button';
   openNotesButton.textContent = 'Appunti';
 
+  const videoFrame = mapPanel.querySelector('.lesson-video-frame');
+  const mapImage = mapPanel.querySelector('img');
+  let videoToggleButton = null;
+
+  function setVideoState(showVideo) {
+    if (!videoFrame || !mapImage || !videoToggleButton) {
+      return;
+    }
+
+    videoFrame.hidden = !showVideo;
+    mapImage.hidden = showVideo;
+    videoToggleButton.textContent = showVideo ? 'Mostra immagine' : 'Video-lezione';
+  }
+
+  if (videoFrame && mapImage) {
+    videoToggleButton = document.createElement('button');
+    videoToggleButton.className = 'ghost-btn';
+    videoToggleButton.type = 'button';
+    videoToggleButton.textContent = 'Video-lezione';
+    videoToggleButton.addEventListener('click', function () {
+      setVideoState(videoFrame.hidden);
+    });
+    actionBar.appendChild(videoToggleButton);
+    setVideoState(false);
+  }
+
   actionBar.appendChild(pdfLink);
   actionBar.appendChild(fullLessonButton);
   actionBar.appendChild(openNotesButton);
